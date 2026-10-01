@@ -638,6 +638,14 @@ Expected:
 4. Photo still comes from `/assets/profile.png` on your deployed site.
 5. Suiscan shows your `website_url` link and explorer image URL.
 
+After completing the workshop task, submit the completion form:
+
+<p align="center">
+  <a href="https://forms.gle/UDkMqhAU3z2ekFn66">
+    <img src="https://img.shields.io/badge/Complete_the_Workshop_Exercise-7C3AED?style=for-the-badge&amp;logo=googleforms&amp;logoColor=white" alt="Cryptita Plays — Builder Workshop Exercise Completion" height="48">
+  </a>
+</p>
+
 ---
 
 ### Step 10 — Optional: replace or reset the displayed card
