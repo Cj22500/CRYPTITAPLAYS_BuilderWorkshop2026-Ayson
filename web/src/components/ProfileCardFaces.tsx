@@ -3,6 +3,7 @@ import { objectId as configuredObjectId, suiscanObjectUrl } from '../config';
 import { PROFILE_PHOTO_PATH } from '../lib/profilePhoto';
 import type { UsePortfolioResult } from '../types';
 import BrandIcon from './BrandIcon';
+import '../styles/community-partners.css';
 
 export function truncateValue(value: string): string {
   if (!value) return '—';
@@ -297,40 +298,23 @@ export function CardBackFace({
 
         <div className="back-community">
           <div className="community-title">Community Partners:</div>
-          <div className="community-logos">
-            <a
-              className="community-partner"
-              href="https://www.facebook.com/DEVCONLAGUNA"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="DEVCON Philippines"
-              tabIndex={backFaceTabIndex}
-            >
-              <img src="/assets/icon/devcon-laguna.svg" alt="DEVCON Philippines" />
-            </a>
-            <div className="community-logo-divider" />
-            <a
-              className="community-partner"
-              href="https://www.facebook.com/awssbg"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="AWS UPHSL"
-              tabIndex={backFaceTabIndex}
-            >
-              <img src="/assets/icon/aws-uphsl.svg" alt="AWS UPHSL" />
-            </a>
-            <div className="community-logo-divider" />
+          <div className="community-logos community-logos--mmcl">
+            <div className="community-partner">
+              <img src="/assets/icon/cjc-race.svg" alt="CJC Race" />
+            </div>
+            <div className="community-partner">
+              <img src="/assets/icon/blockchain4youth.svg" alt="Blockchain4Youth" />
+            </div>
             <a
               className="community-partner"
               href="https://www.facebook.com/grantix.global"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="grantix"
+              aria-label="Grantix"
               tabIndex={backFaceTabIndex}
             >
-              <img src="/assets/icon/grantix.svg" alt="grantix" />
+              <img src="/assets/icon/grantix-mmcl.svg" alt="Grantix" />
             </a>
-            <div className="community-logo-divider" />
             <a
               className="community-partner"
               href="https://www.facebook.com/kamiyonstudio"
@@ -339,8 +323,14 @@ export function CardBackFace({
               aria-label="Kamiyon Studio"
               tabIndex={backFaceTabIndex}
             >
-              <img src="/assets/icon/kamiyon.svg" alt="Kamiyon Studio" />
+              <img src="/assets/icon/kamiyon-studio.svg" alt="Kamiyon Studio" />
             </a>
+            <div className="community-partner">
+              <img src="/assets/icon/blockchain4her.svg" alt="Blockchain4Her" />
+            </div>
+            <div className="community-partner">
+              <img src="/assets/icon/lbank-academy.svg" alt="Lbank Academy" />
+            </div>
           </div>
         </div>
       </div>
