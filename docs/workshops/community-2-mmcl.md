@@ -6,17 +6,24 @@ The site remains a read-only React/TypeScript frontend. These exercises require 
 
 ## Start from the MMCL starter
 
-For this edition, replace the README's **copy main only** starting-point instructions with the steps below. A fork containing only `main` does not automatically contain the MMCL starter. Fork the upstream repository to your account, clone your fork, and fetch the MMCL branch explicitly from upstream. Replace the two placeholders in the clone URL and directory name with your own account and fork name.
+The repository's `main` branch contains the MMCL starter. Follow the README's fork instructions (copying only `main` is enough), then clone your fork. Replace the two placeholders below with your account and fork name. If you forked before this edition was published, sync your fork's `main` with upstream first.
 
 ```bash
-git clone https://github.com/YOUR_GITHUB_USERNAME/YOUR_FORK_NAME.git
+git clone --branch main https://github.com/YOUR_GITHUB_USERNAME/YOUR_FORK_NAME.git
 cd YOUR_FORK_NAME
-git fetch https://github.com/owenlim225/CRYPTITAPLAYS_BuilderWorkshop2026.git codex/community-2-mmcl
-git switch -c my-mmcl-workshop FETCH_HEAD
 git branch --show-current
 ```
 
-Expected branch: `my-mmcl-workshop`. The branch starts with bugs present and the original card design. If that local branch already exists, switch to it instead of recreating it. If the fetch reports that the remote branch does not exist, ask the facilitator to publish the starter before continuing; do not silently use `main` or the facilitator solution.
+Expected branch: `main`. The starter includes bugs and the original card design. Work on your fork's `main` so the README's push and hosting instructions apply directly. Do not start from the facilitator solution branch.
+
+For local practice without a fork, clone the upstream repository directly:
+
+```bash
+git clone --branch main https://github.com/owenlim225/CRYPTITAPLAYS_BuilderWorkshop2026.git
+cd CRYPTITAPLAYS_BuilderWorkshop2026
+```
+
+Use a fork if you want to push your work to your own GitHub repository or deploy it through the workshop's hosting flow.
 
 Install the locked dependencies from `web/`:
 
@@ -133,4 +140,4 @@ Manually check the following and record what you actually verified:
 4. After a successful fetch, copy object ID and owner; export an image and inspect its actual **1080 × 1350** dimensions, both card faces, logo proportions, readable fields, and absence of insects. Check that a missing photo has a usable fallback. If no successful fetch is available, mark export and populated-data checks as pending rather than claiming they passed.
 5. Keep `.env` out of Git. Review your diff, commit your solution on your own branch, and push that branch to your fork if submitting through GitHub. Share front/back screenshots, the exported image when available, and a short description of your design choices and checks.
 
-If you deploy your solution, choose your own solution branch as the hosting production branch; the original README's references to deploying `main` do not select this branch automatically. The original CLI and network instructions still apply to any optional on-chain work.
+If you deploy your solution from your fork's `main`, the README's hosting branch instructions apply directly. If you choose another solution branch, select that branch in your hosting settings. The original CLI and network instructions still apply to any optional on-chain work.

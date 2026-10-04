@@ -2,7 +2,7 @@
 
 # Cryptita Plays — Builder Workshop
 
-**COMMUNITY-2-MMCL student starter** — Begin with the [MMCL challenges and branch setup](docs/workshops/community-2-mmcl.md). Those instructions replace the main-only fork and deployment branch choices below for this edition. Both challenges start unfinished.
+**COMMUNITY-2-MMCL student starter** — The `main` branch contains this edition with both challenges unfinished. Fork or clone `main`, then follow the [MMCL challenges](docs/workshops/community-2-mmcl.md).
 
 See [university editions](docs/workshops/editions.md) for the preserved `COMMUNITY-1-BFCBINAN` source and the separate facilitator solutions.
 
@@ -25,7 +25,7 @@ See [university editions](docs/workshops/editions.md) for the preserved `COMMUNI
   <tr>
     <td align="center" valign="middle">
       <a href="https://www.facebook.com/kamiyonstudio">
-      <img src="web/public/assets/icon/kamiyon-studio.svg" alt="Kamiyon Studio" height="32">
+      <img src="web/public/assets/icon/kamiyon-studio.svg" alt="Kamiyon Studio" height="48">
       </a>
     </td>
     <td align="center" valign="middle">

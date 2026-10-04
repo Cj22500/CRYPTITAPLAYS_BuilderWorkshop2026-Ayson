@@ -5,7 +5,7 @@ Each university edition lives in this repository. An annotated tag freezes its c
 | Edition / purpose | Git reference | Notes |
 | --- | --- | --- |
 | COMMUNITY-1-BFCBINAN | Tag `COMMUNITY-1-BFCBINAN` | Preserved source at `725d201b9ac1ced4144d49d7b20ee45ca2bf6d7f`. |
-| COMMUNITY-2-MMCL student starter | Branch `codex/community-2-mmcl`; release tag `COMMUNITY-2-MMCL` | Both challenges begin unfinished. Use the tag for the released snapshot and the branch for ongoing maintenance. |
+| COMMUNITY-2-MMCL student starter | Branch `main`; release tag `COMMUNITY-2-MMCL` | Both challenges begin unfinished. Clone or fork `main` for the current workshop. The tag preserves the original released snapshot; `codex/community-2-mmcl` retains its development history. |
 | MMCL facilitator solutions | Branch `codex/community-2-mmcl-facilitator` | Contains bug removal and one example redesign. A public branch is discoverable by students; it is a teaching reference, not a private answer key. |
 
 See the [MMCL student guide](community-2-mmcl.md) for setup, exercises, and completion criteria, and the [validation record](validation-mmcl.md) for checks and limitations. The [README](../../README.md) remains the main guide for the existing Sui Mainnet CLI workflow.
