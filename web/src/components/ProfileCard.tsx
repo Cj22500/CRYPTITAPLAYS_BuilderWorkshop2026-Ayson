@@ -3,6 +3,7 @@ import { useCardOrbit } from '../hooks/useCardOrbit';
 import { PROFILE_PHOTO_PATH } from '../lib/profilePhoto';
 import type { UsePortfolioResult } from '../types';
 import { CardBackFace, CardFrontFace } from './ProfileCardFaces';
+import { WorkshopBugs } from './WorkshopBugs';
 import '../styles/profile-card.css';
 
 type ProfileCardProps = {
@@ -76,7 +77,7 @@ export default function ProfileCard({ portfolio, isOrbiting = false }: ProfileCa
 
   return (
     <div className="card-orbit" ref={orbitRef}>
-      <div className="card-scale__inner">
+      <div className="card-scale__inner workshop-bugs-host">
         <div
           className={`profile-card${isFlipped ? ' is-flipped' : ''}${motionLocked ? ' is-orbiting' : ''}`}
           onClick={handleCardClick}
@@ -119,6 +120,7 @@ export default function ProfileCard({ portfolio, isOrbiting = false }: ProfileCa
             backFaceAriaHidden={!isFlipped}
           />
         </div>
+        <WorkshopBugs motionLocked={motionLocked} />
       </div>
     </div>
   );
