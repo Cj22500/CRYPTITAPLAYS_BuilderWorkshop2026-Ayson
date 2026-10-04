@@ -3,7 +3,7 @@ import { siGithub } from '../lib/brandIcons';
 import BrandIcon from './BrandIcon';
 
 const GITHUB_REPO_URL =
-  'https://github.com/owenlim225/Cryptita-plays-builder-workshop';
+  'https://github.com/owenlim225/CRYPTITAPLAYS_BuilderWorkshop2026/tree/main';
 
 const Header = forwardRef<HTMLElement>(function Header(_props, ref) {
   return (

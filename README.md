@@ -2,44 +2,40 @@
 
 # Cryptita Plays — Builder Workshop
 
+**COMMUNITY-2-MMCL student starter** — The `main` branch contains this edition with both challenges unfinished. Fork or clone `main`, then follow the [MMCL challenges](docs/workshops/community-2-mmcl.md).
 
-<!-- ### Educational partners -->
+See [university editions](docs/workshops/editions.md) for the preserved `COMMUNITY-1-BFCBINAN` source and the separate facilitator solutions.
+
+
+<!-- COMMUNITY-2-MMCL partners, in workshop order -->
 <table align="center">
   <tr>
     <td align="center" valign="middle">
-      <img src="web/public/assets/icon/B4Her%20Logo.svg" alt="B4Her" height="28">
+      <img src="web/public/assets/icon/cjc-race.svg" alt="CJC Race" height="56">
     </td>
-    <td width="1"></td>
     <td align="center" valign="middle">
-      <img src="web/public/assets/icon/b4y%20Logo.svg" alt="B4Y" height="28">
+      <img src="web/public/assets/icon/blockchain4youth.svg" alt="Blockchain4Youth" height="32">
     </td>
-  </tr>
-</table>
-
-<!-- ### Community partners -->
-
-<table align="center">
-  <tr>
-    <td align="center" valign="middle">
-      <a href="https://www.facebook.com/DEVCONLAGUNA">
-        <img src="web/public/assets/icon/devcon-laguna.svg" alt="DEVCON Laguna" height="24">
-      </a>
-    </td>
-    <td width="1"></td>
     <td align="center" valign="middle">
       <a href="https://www.facebook.com/grantix.global">
-        <img src="web/public/assets/icon/grantix.svg" alt="Grantix" height="24">
-      </a>
-    </td>
-    <td width="1"></td>
-    <td align="center" valign="middle">
-      <a href="https://www.facebook.com/kamiyonstudio">
-        <img src="web/public/assets/icon/kamiyon.svg" alt="Kamiyon Studio" height="48">
+      <img src="web/public/assets/icon/grantix-mmcl.svg" alt="Grantix" height="32">
       </a>
     </td>
   </tr>
+  <tr>
+    <td align="center" valign="middle">
+      <a href="https://www.facebook.com/kamiyonstudio">
+      <img src="web/public/assets/icon/kamiyon-studio.svg" alt="Kamiyon Studio" height="48">
+      </a>
+    </td>
+    <td align="center" valign="middle">
+      <img src="web/public/assets/icon/blockchain4her.svg" alt="Blockchain4Her" height="32">
+    </td>
+    <td align="center" valign="middle">
+      <img src="web/public/assets/icon/lbank-academy.svg" alt="Lbank Academy" height="42">
+    </td>
+  </tr>
 </table>
-
 
 ---
 
