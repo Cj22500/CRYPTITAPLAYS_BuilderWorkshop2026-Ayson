@@ -2,6 +2,10 @@
 
 # Cryptita Plays — Builder Workshop
 
+**COMMUNITY-2-MMCL student starter** — Begin with the [MMCL challenges and branch setup](docs/workshops/community-2-mmcl.md). Those instructions replace the main-only fork and deployment branch choices below for this edition. Both challenges start unfinished.
+
+See [university editions](docs/workshops/editions.md) for the preserved `COMMUNITY-1-BFCBINAN` source and the separate facilitator solutions.
+
 
 <!-- COMMUNITY-2-MMCL partners, in workshop order -->
 <table align="center">
