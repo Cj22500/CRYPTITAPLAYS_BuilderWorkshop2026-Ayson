@@ -1,13 +1,13 @@
-/** Universal social post size — 4:5 aspect ratio */
-export const EXPORT_WIDTH = 1080;
-export const EXPORT_HEIGHT = 1350;
-export const EXPORT_ASPECT_RATIO = 4 / 5;
+/** Match the workshop artwork at its original square size. */
+export const EXPORT_WIDTH = 1600;
+export const EXPORT_HEIGHT = 1600;
+export const EXPORT_ASPECT_RATIO = 1;
 
 /**
- * Card width inside the export frame (design width 1020, scaled to fit
- * the 4:5 still with tilt padding).
+ * Card width inside the export frame, scaled proportionally from the
+ * original 1080px-wide composition.
  */
-export const EXPORT_CARD_WIDTH = 780;
+export const EXPORT_CARD_WIDTH = 780 * (1600 / 1080);
 
 /** Marble base fill for canvas letterbox / html-to-image fallback. */
 export const EXPORT_BACKGROUND = '#0f1a2b';

@@ -456,7 +456,7 @@
 
 .flip-btn {
   position: absolute;
-  right: -4px;
+  right: 0;
   top: 48%;
   transform: translateY(-50%) translateZ(100px);
   z-index: 10;

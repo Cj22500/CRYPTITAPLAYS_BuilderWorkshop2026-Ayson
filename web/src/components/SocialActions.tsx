@@ -57,10 +57,10 @@ export default function SocialActions({
 }: SocialActionsProps) {
   const cameraDisabled = isGenerating || !onCameraClick || !canExport;
   const cameraLabel = isGenerating
-    ? 'Generating builder card photo'
+    ? 'Generating builder card GIF'
     : canExport
-      ? 'Download builder card photo'
-      : 'Download builder card photo (available after the card loads)';
+      ? 'Download builder card GIF'
+      : 'Download builder card GIF (available after the card loads)';
   const orbitLabel = isOrbiting
     ? 'Stop card rotation and return to the front'
     : 'Spin the card in a continuous loop';
@@ -77,7 +77,7 @@ export default function SocialActions({
           onClick={onCameraClick}
         >
           <CameraIcon />
-          <span className="social-actions__label">Camera</span>
+          <span className="social-actions__label">{isGenerating ? 'Creating GIF…' : 'GIF'}</span>
         </button>
         <button
           type="button"
