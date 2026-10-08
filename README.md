@@ -62,16 +62,16 @@ Screenshots in this guide are numbered to match the section they belong to (for 
 4. [Repository layout](#repository-layout)
 5. [Step-by-step workshop path](#step-by-step-workshop-path)
   - [Star and fork on GitHub](#star-and-fork-on-github)
-  - [Step 1 — Clone, install, get Mainnet SUI](#step-1--clone-your-fork-open-vs-code-install-frontend-get-mainnet-sui)
-  - [Step 2 — Replace your profile photo](#step-2--replace-your-profile-photo)
-  - [Step 3 — Run the site locally](#step-3--run-the-site-locally-empty-card-is-ok)
-  - [Step 4 — Deploy the website](#step-4--deploy-the-website-and-copy-your-url)
-  - [Step 5 — Build and test the Move package](#step-5--build-and-test-the-move-package)
-  - [Step 6 — Publish the package on Mainnet](#step-6--publish-the-package-on-mainnet)
-  - [Step 7 — Create your BuilderCard](#step-7--create-your-buildercard)
-  - [Step 8 — Point the frontend at your object](#step-8--point-the-frontend-at-your-object)
-  - [Step 9 — Rebuild and verify](#step-9--rebuild-and-verify)
-  - [Step 10 — Optional reset](#step-10--optional-replace-or-reset-the-displayed-card)
+  - [Step 1: Clone, install, get Mainnet SUI](#step-1-clone-your-fork-open-vs-code-install-frontend-get-mainnet-sui)
+  - [Step 2: Replace your profile photo](#step-2-replace-your-profile-photo)
+  - [Step 3: Run the site locally](#step-3-run-the-site-locally-empty-card-is-ok)
+  - [Step 4: Deploy the website](#step-4-deploy-the-website-and-copy-your-url)
+  - [Step 5: Build and test the Move package](#step-5-build-and-test-the-move-package)
+  - [Step 6: Publish the package on Mainnet](#step-6-publish-the-package-on-mainnet)
+  - [Step 7: Create your BuilderCard](#step-7-create-your-buildercard)
+  - [Step 8: Point the frontend at your object](#step-8-point-the-frontend-at-your-object)
+  - [Step 9: Rebuild and verify](#step-9-rebuild-and-verify)
+  - [Step 10: Optional reset](#step-10-optional-replace-or-reset-the-displayed-card)
 6. [Package ID vs Object ID](#package-id-vs-object-id)
 7. [Environment variables](#environment-variables)
 8. [Troubleshooting](#troubleshooting)
@@ -224,7 +224,9 @@ Follow these steps in order. Each screenshot is captioned so you can match your 
 **Figure 0.2** — Create-fork form with your account as owner, the required repo name, and the `main` branch selected.
 
 ---
-### Step 1 — Clone your fork, open VS Code, install frontend, get Mainnet SUI
+<div style="background-color: #a11ff1; color: #ffffff; padding: 8px 12px; margin: 24px 0;">
+  <h3 id="step-1-clone-your-fork-open-vs-code-install-frontend-get-mainnet-sui" style="color: #ffffff; margin: 0;">Step 1: Clone your fork, open VS Code, install frontend, get Mainnet SUI</h3>
+</div>
 
 1. Open a terminal.
 2. Clone **your fork** (not the upstream repo), then open it in VS Code:
@@ -295,7 +297,9 @@ sui client balance
 ```
 
 ---
-### Step 2 — Replace your profile photo
+<div style="background-color: #a11ff1; color: #ffffff; padding: 8px 12px; margin: 24px 0;">
+  <h3 id="step-2-replace-your-profile-photo" style="color: #ffffff; margin: 0;">Step 2: Replace your profile photo</h3>
+</div>
 
 1. Replace `web/public/assets/profile.png` with your portrait.
 
@@ -307,7 +311,9 @@ sui client balance
 2. Prefer a square or portrait photo; it is cropped to the card frame.
 
 ---
-### Step 3 — Run the site locally (empty card is OK)
+<div style="background-color: #a11ff1; color: #ffffff; padding: 8px 12px; margin: 24px 0;">
+  <h3 id="step-3-run-the-site-locally-empty-card-is-ok" style="color: #ffffff; margin: 0;">Step 3: Run the site locally (empty card is OK)</h3>
+</div>
 
 ```bash
 npm run dev
@@ -326,7 +332,9 @@ Expected:
 - Photo still shows `profile.png` from local assets
 
 ---
-### Step 4 — Deploy the website and copy your URL
+<div style="background-color: #a11ff1; color: #ffffff; padding: 8px 12px; margin: 24px 0;">
+  <h3 id="step-4-deploy-the-website-and-copy-your-url" style="color: #ffffff; margin: 0;">Step 4: Deploy the website and copy your URL</h3>
+</div>
 
 Deploy `web/` first so you have a public HTTPS URL for the on-chain `website_url` argument.
 
@@ -390,7 +398,9 @@ Open the URL in a private or signed-out browser window and confirm that it loads
 
 
 
-### Step 5 — Build and test the Move package
+<div style="background-color: #a11ff1; color: #ffffff; padding: 8px 12px; margin: 24px 0;">
+  <h3 id="step-5-build-and-test-the-move-package" style="color: #ffffff; margin: 0;">Step 5: Build and test the Move package</h3>
+</div>
 
 Go back to VS Code.
 
@@ -426,7 +436,9 @@ sui move build
 
 
 
-### Step 6 — Publish the package on Mainnet
+<div style="background-color: #a11ff1; color: #ffffff; padding: 8px 12px; margin: 24px 0;">
+  <h3 id="step-6-publish-the-package-on-mainnet" style="color: #ffffff; margin: 0;">Step 6: Publish the package on Mainnet</h3>
+</div>
 
 ```bash
 sui client switch --env mainnet   # make sure you're on mainnet
@@ -451,7 +463,9 @@ The screenshot above shows the start of publish output. Scroll farther to **Publ
 
 
 
-### Step 7 — Create your BuilderCard
+<div style="background-color: #a11ff1; color: #ffffff; padding: 8px 12px; margin: 24px 0;">
+  <h3 id="step-7-create-your-buildercard" style="color: #ffffff; margin: 0;">Step 7: Create your BuilderCard</h3>
+</div>
 
 Pass the **shared registry object** first, then **12 strings** in this exact order:
 
@@ -561,7 +575,9 @@ sui client call --package 0xYOUR_PACKAGE_ID --module builder_card --function cre
 
 
 
-### Step 8 — Point the frontend at your object
+<div style="background-color: #a11ff1; color: #ffffff; padding: 8px 12px; margin: 24px 0;">
+  <h3 id="step-8-point-the-frontend-at-your-object" style="color: #ffffff; margin: 0;">Step 8: Point the frontend at your object</h3>
+</div>
 
 Now that Step 7 produced your BuilderCard Object ID, edit `web/.env`:
 
@@ -613,7 +629,9 @@ Vite reads `VITE_*` values at build time, so repeat this redeploy step whenever 
 
 
 
-### Step 9 — Rebuild and verify
+<div style="background-color: #a11ff1; color: #ffffff; padding: 8px 12px; margin: 24px 0;">
+  <h3 id="step-9-rebuild-and-verify" style="color: #ffffff; margin: 0;">Step 9: Rebuild and verify</h3>
+</div>
 
 Verify the completed configuration locally:
 
@@ -644,7 +662,9 @@ After completing the workshop task, submit the completion form:
 
 ---
 
-### Step 10 — Optional: replace or reset the displayed card
+<div style="background-color: #a11ff1; color: #ffffff; padding: 8px 12px; margin: 24px 0;">
+  <h3 id="step-10-optional-replace-or-reset-the-displayed-card" style="color: #ffffff; margin: 0;">Step 10: Optional: replace or reset the displayed card</h3>
+</div>
 
 **Show a different card:** call `create_builder_card` again, update `VITE_PORTFOLIO_OBJECT_ID`, rebuild/redeploy. Old objects stay on-chain.
 
