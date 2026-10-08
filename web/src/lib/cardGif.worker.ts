@@ -6,14 +6,6 @@ self.onmessage = ({ data: [front, back, background] }: MessageEvent<ImageBitmap[
     const canvas = new OffscreenCanvas(EXPORT_WIDTH, EXPORT_HEIGHT);
     const ctx = canvas.getContext('2d', { willReadFrequently: true });
     if (!ctx) throw new Error('Canvas is unavailable.');
-    // Build one bounded palette from all three sources instead of clustering every full-size frame.
-    const samples = new OffscreenCanvas(256, 768);
-    const sampleContext = samples.getContext('2d', { willReadFrequently: true });
-    if (!sampleContext) throw new Error('Canvas is unavailable.');
-    [background, front, back].forEach((image, index) => {
-      sampleContext.drawImage(image, 0, index * 256, 256, 256);
-    });
-    const palette = quantize(sampleContext.getImageData(0, 0, 256, 768).data, 256, { format: 'rgb444' });
     const gif = GIFEncoder();
     const frames = 60;
     const cardHeight = EXPORT_CARD_WIDTH / 1.56;
@@ -43,9 +35,9 @@ self.onmessage = ({ data: [front, back, background] }: MessageEvent<ImageBitmap[
           left.x, (EXPORT_HEIGHT - height) / 2, Math.max(0.3, right.x - left.x + 0.4), height);
       }
       const pixels = ctx.getImageData(0, 0, EXPORT_WIDTH, EXPORT_HEIGHT).data;
-      gif.writeFrame(applyPalette(pixels, palette, 'rgb444'), EXPORT_WIDTH, EXPORT_HEIGHT, {
-        palette: frame === 0 ? palette : undefined,
-        delay: frame === 0 || frame === frames / 2 ? 800 : 70, repeat: 0,
+      const palette = quantize(pixels, 256);
+      gif.writeFrame(applyPalette(pixels, palette), EXPORT_WIDTH, EXPORT_HEIGHT, {
+        palette, delay: frame === 0 || frame === frames / 2 ? 800 : 70, repeat: 0,
       });
     }
     gif.finish();

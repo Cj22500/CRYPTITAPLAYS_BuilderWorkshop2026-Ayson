@@ -31,8 +31,8 @@ vm.runInNewContext(code, {
   require(name) {
     if (name === './cardPhotoExport') return settings;
     return {
-      quantize: (_pixels, _colors, options) => { paletteCalls++; assert.equal(options.format, 'rgb444'); return [[0, 0, 0]]; },
-      applyPalette: (_pixels, _palette, format) => { assert.equal(format, 'rgb444'); return new Uint8Array(1); },
+      quantize: (_pixels, _colors, options) => { paletteCalls++; assert.equal(options, undefined); return [[0, 0, 0]]; },
+      applyPalette: (_pixels, _palette, format) => { assert.equal(format, undefined); return new Uint8Array(1); },
       GIFEncoder: () => ({ writeFrame: (...args) => frames.push(args), finish() {}, bytesView: () => new Uint8Array([71, 73, 70]) }),
     };
   },
@@ -42,9 +42,8 @@ const images = ['front', 'back', 'background'].map(name => ({ name, width: 1170,
 worker.onmessage({ data: images });
 assert.equal(result.type, 'image/gif');
 assert.equal(frames.length, 60);
-assert.equal(paletteCalls, 1);
-assert.ok(frames[0][3].palette);
-assert.ok(frames.slice(1).every(([, , , options]) => options.palette === undefined));
+assert.equal(paletteCalls, 60);
+assert.ok(frames.every(([, , , options]) => options.palette));
 assert.ok(frames.every(([, width, height, options]) => width === 1600 && height === 1600 && options.repeat === 0));
 assert.equal(frames[0][3].delay, 800);
 assert.equal(frames[30][3].delay, 800);

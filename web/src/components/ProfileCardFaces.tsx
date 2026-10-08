@@ -4,7 +4,7 @@ import { PROFILE_PHOTO_PATH } from '../lib/profilePhoto';
 import type { UsePortfolioResult } from '../types';
 import BrandIcon from './BrandIcon';
 import '../styles/community-partners.css';
-import SCHOOL_LOGO from '../assets/Mapúa_Malayan_Colleges_Laguna_New_Logo.webp';
+import SCHOOL_LOGO from '../assets/school_logo.webp';
 
 export function truncateValue(value: string): string {
   if (!value) return '—';
