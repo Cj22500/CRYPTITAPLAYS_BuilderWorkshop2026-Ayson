@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
+import { createRequire } from 'node:module';
 import ts from 'typescript';
 
 const source = readFileSync(new URL('../src/lib/cardGif.worker.ts', import.meta.url), 'utf8');
@@ -11,6 +12,7 @@ const frames = [];
 const draws = [];
 let result;
 let failCanvas = false;
+let paletteCalls = 0;
 const context = {
   fillRect() {},
   drawImage(...args) { draws.push(args); },
@@ -19,12 +21,19 @@ const context = {
 const worker = { postMessage(value) { result = value; } };
 vm.runInNewContext(code, {
   exports: {}, self: worker, Blob, Uint8Array,
-  OffscreenCanvas: class { getContext() { return failCanvas ? null : context; } },
+  OffscreenCanvas: class {
+    constructor(width) { this.width = width; }
+    getContext() {
+      if (failCanvas) return null;
+      return this.width === 256 ? { ...context, drawImage() {} } : context;
+    }
+  },
   require(name) {
     if (name === './cardPhotoExport') return settings;
     return {
-      quantize: () => [[0, 0, 0]], applyPalette: () => new Uint8Array(1),
-      GIFEncoder: () => ({ writeFrame: (...args) => frames.push(args), finish() {}, bytes: () => new Uint8Array([71, 73, 70]) }),
+      quantize: (_pixels, _colors, options) => { paletteCalls++; assert.equal(options.format, 'rgb444'); return [[0, 0, 0]]; },
+      applyPalette: (_pixels, _palette, format) => { assert.equal(format, 'rgb444'); return new Uint8Array(1); },
+      GIFEncoder: () => ({ writeFrame: (...args) => frames.push(args), finish() {}, bytesView: () => new Uint8Array([71, 73, 70]) }),
     };
   },
 });
@@ -33,6 +42,9 @@ const images = ['front', 'back', 'background'].map(name => ({ name, width: 1170,
 worker.onmessage({ data: images });
 assert.equal(result.type, 'image/gif');
 assert.equal(frames.length, 60);
+assert.equal(paletteCalls, 1);
+assert.ok(frames[0][3].palette);
+assert.ok(frames.slice(1).every(([, , , options]) => options.palette === undefined));
 assert.ok(frames.every(([, width, height, options]) => width === 1600 && height === 1600 && options.repeat === 0));
 assert.equal(frames[0][3].delay, 800);
 assert.equal(frames[30][3].delay, 800);
@@ -47,3 +59,31 @@ worker.onmessage({ data: images });
 assert.ok(result.error);
 assert.equal(closed, 6);
 console.log('GIF worker checks passed: dimensions, looping, face sequence, pauses, finite projection, failure and cleanup.');
+
+// Exercise the real encoder with full-size, varied-color frames; the mocks above cannot catch slow quantization.
+const gifenc = createRequire(import.meta.url)('gifenc');
+vm.runInNewContext(code, {
+  exports: {}, self: worker, Blob, Uint8Array,
+  OffscreenCanvas: class {
+    constructor(width, height) {
+      this.pixels = new Uint8ClampedArray(width * height * 4);
+      for (let i = 0; i < width * height; i++) {
+        this.pixels.set([i % 256, (i >> 4) % 256, (i >> 8) % 256, 255], i * 4);
+      }
+    }
+    getContext() {
+      return { fillRect() {}, drawImage() {}, getImageData: () => ({ data: this.pixels }) };
+    }
+  },
+  require: name => name === './cardPhotoExport' ? settings : gifenc,
+});
+const started = performance.now();
+worker.onmessage({ data: images });
+assert.ok(result instanceof Blob, result?.error);
+const bytes = new Uint8Array(await result.arrayBuffer());
+assert.equal(new TextDecoder().decode(bytes.slice(0, 6)), 'GIF89a');
+assert.equal(bytes[6] | bytes[7] << 8, 1600);
+assert.equal(bytes[8] | bytes[9] << 8, 1600);
+assert.equal(bytes.at(-1), 0x3b);
+assert.ok(performance.now() - started < 120000, 'Encoding exceeded the export timeout');
+console.log(`Real encoder: 60 full-size frames in ${((performance.now() - started) / 1000).toFixed(1)}s, ${(bytes.length / 1048576).toFixed(1)} MiB.`);
