@@ -134,6 +134,15 @@ fun profile_photo_url(website_url: &String): String {
     photo_url
 }
 
+#[test]
+fun test_profile_photo_url() {
+    let url = string::utf8(b"https://example.com");
+    assert!(
+        profile_photo_url(&url) == string::utf8(b"https://example.com/assets/profile.png"),
+        0,
+    );
+}
+
 /// Creates the participant's BuilderCard.
 ///
 /// Builder number is automatically claimed from the shared

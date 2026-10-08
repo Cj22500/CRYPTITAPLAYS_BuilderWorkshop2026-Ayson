@@ -1,8 +1,16 @@
 import type { BuilderCardFields, BuilderCardView } from '../types';
 
-function toString(value: unknown): string {
-  if (value == null) return '';
-  return String(value);
+function toString(value: unknown, field: string): string {
+  if (typeof value !== 'string') {
+    throw new Error(`BuilderCard field ${field} is missing or invalid.`);
+  }
+  return value;
+}
+
+function toBuilderNumber(value: unknown): string {
+  if (typeof value === 'string' && /^\d+$/.test(value)) return value;
+  if (typeof value === 'number' && Number.isSafeInteger(value) && value >= 0) return String(value);
+  throw new Error('BuilderCard field builder_no is missing or invalid.');
 }
 
 function parseSkills(raw: string): string[] {
@@ -44,20 +52,20 @@ export function mapBuilderCard(
   networkLabel: string,
 ): BuilderCardView {
   const builderFields: BuilderCardFields = {
-    builder_name: toString(fields.builder_name),
-    builder_no: toString(fields.builder_no),
-    profession: toString(fields.profession),
-    program: toString(fields.program),
-    country: toString(fields.country),
-    specialization: toString(fields.specialization),
-    building_since: toString(fields.building_since),
-    focus: toString(fields.focus),
-    community: toString(fields.community),
-    skills: toString(fields.skills),
-    issued: toString(fields.issued),
-    about: toString(fields.about),
-    website_url: toString(fields.website_url),
-    photo_url: toString(fields.photo_url),
+    builder_name: toString(fields.builder_name, 'builder_name'),
+    builder_no: toBuilderNumber(fields.builder_no),
+    profession: toString(fields.profession, 'profession'),
+    program: toString(fields.program, 'program'),
+    country: toString(fields.country, 'country'),
+    specialization: toString(fields.specialization, 'specialization'),
+    building_since: toString(fields.building_since, 'building_since'),
+    focus: toString(fields.focus, 'focus'),
+    community: toString(fields.community, 'community'),
+    skills: toString(fields.skills, 'skills'),
+    issued: toString(fields.issued, 'issued'),
+    about: toString(fields.about, 'about'),
+    website_url: toString(fields.website_url, 'website_url'),
+    photo_url: toString(fields.photo_url, 'photo_url'),
   };
 
   return {

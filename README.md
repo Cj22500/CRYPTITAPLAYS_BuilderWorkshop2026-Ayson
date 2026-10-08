@@ -120,6 +120,7 @@ cd web
 npm install
 npm run dev
 npm run lint
+npm run test
 npm run build
 npm run preview
 ```
