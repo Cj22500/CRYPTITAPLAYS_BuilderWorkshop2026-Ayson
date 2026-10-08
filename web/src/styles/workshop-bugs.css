@@ -20,6 +20,8 @@
   top: 79%;
   width: 56px;
   height: 56px;
+  pointer-events: auto;
+  transition: translate 220ms ease-out;
   animation: workshop-bug-land 1.4s var(--arrival-delay) both;
 }
 
@@ -48,9 +50,21 @@
   transform: rotate(var(--heading));
 }
 
+.workshop-bugs__body {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: workshop-bug-body 6s ease-in-out var(--arrival-delay) infinite;
+}
+
+.workshop-bugs__eyes {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: workshop-bug-blink 6s linear var(--arrival-delay) infinite;
+}
+
 .workshop-bugs__wings {
   transform-origin: 32px 30px;
-  animation: workshop-bug-wings 100ms linear var(--arrival-delay) 14;
+  animation: workshop-bug-wings 6s ease-in-out var(--arrival-delay) infinite;
 }
 
 .workshop-bugs.is-scattered .workshop-bugs__flight {
@@ -75,15 +89,35 @@
 }
 
 @keyframes workshop-bug-wings {
-  50% { transform: scaleX(.7); }
+  18%, 22%, 26% { transform: scaleX(.68); }
+  20%, 24% { transform: scaleX(1); }
+}
+
+@keyframes workshop-bug-body {
+  0%, 78%, 100% { transform: rotate(0); }
+  82% { transform: rotate(-12deg); }
+  88% { transform: rotate(10deg); }
+  94% { transform: rotate(-5deg); }
+}
+
+@keyframes workshop-bug-blink {
+  0%, 38%, 42%, 78%, 82%, 100% { transform: scaleY(1); }
+  40%, 80% { transform: scaleY(.12); }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .workshop-bugs__flight,
+  .workshop-bugs__flight:hover,
   .workshop-bugs.is-scattered .workshop-bugs__flight,
   .workshop-bugs__wings,
-  .workshop-bugs.is-scattered .workshop-bugs__wings {
+  .workshop-bugs.is-scattered .workshop-bugs__wings,
+  .workshop-bugs__body,
+  .workshop-bugs__eyes {
     animation: none;
+  }
+
+  .workshop-bugs__flight {
+    transition: none;
   }
 
   .workshop-bugs.is-scattered {
