@@ -6,9 +6,7 @@ import MoltenMetal from './components/MoltenMetal';
 import ProfileCard from './components/ProfileCard';
 import SocialActions from './components/SocialActions';
 import { usePortfolio } from './hooks/usePortfolio';
-import { getActiveChainTheme } from './lib/chainTheme';
-
-const chainTheme = getActiveChainTheme();
+import campusImage from './assets/campus.jpg';
 
 const CARD_WIDTH = 1020;
 const CARD_ASPECT = 1.56;
@@ -104,9 +102,11 @@ export default function App() {
   return (
     <div className="app-root">
       <MoltenMetal
-        color1={chainTheme.molten.color1}
-        color2={chainTheme.molten.color2}
-        color3={chainTheme.molten.color3}
+        className="app-bg"
+        image={campusImage}
+        primaryColor="#0A2A7A"
+        accentColor="#C8102E"
+        lightColor="#FFFFFF"
       />
       <Header ref={headerRef} />
       <main

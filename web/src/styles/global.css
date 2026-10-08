@@ -3,6 +3,42 @@
   --chain-primary-rgb: 77, 162, 255;
 }
 
+.app-root > header,
+.app-root > footer {
+  background: rgba(255, 255, 255, 0.72);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  backdrop-filter: blur(14px) saturate(1.2);
+  color: #1d1416;
+}
+
+.app-root > header {
+  border-bottom: 1px solid rgba(200, 16, 46, 0.18);
+  box-shadow: 0 4px 18px rgba(142, 11, 32, 0.08);
+}
+
+.app-root > footer {
+  border-top: 1px solid rgba(200, 16, 46, 0.18);
+  color: rgba(29, 20, 22, 0.78);
+}
+
+.app-root > footer strong,
+.app-root > footer b {
+  color: #8e0b20;
+}
+
+.app-root > header a,
+.app-root > header button {
+  color: #1d1416;
+  border-color: rgba(200, 16, 46, 0.3);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.app-root > header a:hover,
+.app-root > header button:hover {
+  color: #c8102e;
+  border-color: #c8102e;
+}
+
 *,
 *::before,
 *::after {
@@ -132,7 +168,7 @@ button {
   letter-spacing: 0.01em;
   text-align: center;
   text-wrap: pretty;
-  color: rgba(255, 255, 255, 0.5);
+  color: #1d1416;
 }
 
 .site-footer__kicker {
@@ -142,7 +178,7 @@ button {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.68);
+  color: #8e0b20;
 }
 
 .site-footer__kicker::after {

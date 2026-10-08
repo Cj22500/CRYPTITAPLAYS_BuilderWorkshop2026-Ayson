@@ -4,6 +4,7 @@ import { PROFILE_PHOTO_PATH } from '../lib/profilePhoto';
 import type { UsePortfolioResult } from '../types';
 import BrandIcon from './BrandIcon';
 import '../styles/community-partners.css';
+import SCHOOL_LOGO from '../assets/Mapúa_Malayan_Colleges_Laguna_New_Logo.webp';
 
 export function truncateValue(value: string): string {
   if (!value) return '—';
@@ -69,8 +70,8 @@ export function CardFrontFace({
 
       <div className="card-top">
         <div className="brand">
-          <h2>CRYPTITA PLAYS</h2>
-          <p>BUILDER WORKSHOP 2026</p>
+          <h2>Mapúa Malayan Colleges Laguna</h2>
+          <p>CRYPTITA PLAYS BUILDER WORKSHOP 2026</p>
         </div>
         <div className="builder-number">
           <span className="builder-number-label">BUILDER NO.</span>
@@ -82,6 +83,9 @@ export function CardFrontFace({
               title={isActive ? 'On-chain profile active' : 'Set VITE_PORTFOLIO_OBJECT_ID to activate'}
             />
           </div>
+        </div>
+        <div className="school-logo-tab">
+          <img src={SCHOOL_LOGO} alt="Mapúa Malayan Colleges Laguna" />
         </div>
       </div>
 
